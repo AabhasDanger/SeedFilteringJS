@@ -6,6 +6,8 @@ I m doing it using a node.js api for native addons called node-gyp, which can en
 
 cubiomes git repo -> https://github.com/Cubitect/cubiomes
 
+node addons
+
 cubiomes is a really amazing library featuring biome and structure generation.
 it dipicts minecraft world generation using arthematic mathematics.
 So there are total around 5,000 lines of code in it.
