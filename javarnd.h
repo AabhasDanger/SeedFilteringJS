@@ -160,7 +160,7 @@ int64_t mulInv(int64_t x, int64_t m)
 //THIS IS THE START OF THE JS CONVERSION
 //===================================================================
 
-//setSeed()
+//setSeed(seed,value)
 static napi_value setSeedMethod(napi_env env, napi_callback_info info) {
   napi_status status;
   size_t argc = 2;
@@ -172,7 +172,7 @@ static napi_value setSeedMethod(napi_env env, napi_callback_info info) {
   return 0;
 }
 
-//next()
+//next(seed,bits)
 static napi_value nextMethod(napi_env env, napi_callback_info info) {
   napi_status status;
   size_t argc = 2;
@@ -184,8 +184,8 @@ static napi_value nextMethod(napi_env env, napi_callback_info info) {
   return RETURN;
 }
 
-//nextInt()
-static napi_value nextMethod(napi_env env, napi_callback_info info) {
+//nextInt(seed,n)
+static napi_value nextIntMethod(napi_env env, napi_callback_info info) {
   napi_status status;
   size_t argc = 2;
   napi_value args[2];
@@ -196,7 +196,7 @@ static napi_value nextMethod(napi_env env, napi_callback_info info) {
   return RETURN;
 }
 
-//nextLong()
+//nextLong(seed)
 static napi_value nextLongMethod(napi_env env, napi_callback_info info){
   napi_status status;
   size_t argc = 1;
@@ -207,8 +207,8 @@ static napi_value nextLongMethod(napi_env env, napi_callback_info info){
   return RETURN;
 }
 
-//nextFloat()
-static napi_value nextLongMethod(napi_env env, napi_callback_info info){
+//nextFloat(seed)
+static napi_value nextFloatMethod(napi_env env, napi_callback_info info){
   napi_status status;
   size_t argc = 1;
   napi_value args[1];
@@ -218,8 +218,8 @@ static napi_value nextLongMethod(napi_env env, napi_callback_info info){
   return RETURN;
 }
 
-//nextDouble()
-static napi_value nextLongMethod(napi_env env, napi_callback_info info){
+//nextDouble(seed)
+static napi_value nextDoubleMethod(napi_env env, napi_callback_info info){
   napi_status status;
   size_t argc = 1;
   napi_value args[1];
@@ -229,5 +229,75 @@ static napi_value nextLongMethod(napi_env env, napi_callback_info info){
   return RETURN;
 }
 
+//skipNextN(seed,n)
+static napi_value skipNextNMethod(napi_env env, napi_callback_info info) {
+  napi_status status;
+  size_t argc = 2;
+  napi_value args[2];
+  status = napi_get_cb_info(env,info,&argc, args, NULL,NULL);
+  int seed = args[0];
+  int n = args[1];
+  skipNextN(seed,n);
+  return 0;
+}
+
+//invSeed48(seed)
+static napi_value invSeed48Method(napi_env env, napi_callback_info info){
+  napi_status status;
+  size_t argc = 1;
+  napi_value args[1];
+  status = napi_get_cb_info(env,info,&argc, args, NULL,NULL);
+  int seed = args[0];
+  int RETURN = invSeed48(seed);
+  return RETURN;
+}
+
+//mulInv(x,m)
+static napi_value mulInvMethod(napi_env env, napi_callback_info info) {
+  napi_status status;
+  size_t argc = 2;
+  napi_value args[2];
+  status = napi_get_cb_info(env,info,&argc, args, NULL,NULL);
+  int x = args[0];
+  int m = args[1];
+  int RETURN = mulInv(x,m);
+  return RETURN;
+}
+
+//Initializer
+static napi_value Init(napi_env env, napi_value exports) {
+  napi_status status;
+  napi_property_descriptor desc = DECLARE_NAPI_METHOD("setSeed", setSeedMethod);
+  status = napi_define_properties(env, exports, 1, &desc);
+  assert(status == napi_ok);
+  napi_property_descriptor desc2 = DECLARE_NAPI_METHOD("next", nextMethod);
+  status = napi_define_properties(env, exports, 1, &desc2);
+  assert(status == napi_ok);
+  napi_property_descriptor desc2 = DECLARE_NAPI_METHOD("nextInt", nextIntMethod);
+  status = napi_define_properties(env, exports, 1, &desc2);
+  assert(status == napi_ok);
+  napi_property_descriptor desc2 = DECLARE_NAPI_METHOD("nextLong", nextLongMethod);
+  status = napi_define_properties(env, exports, 1, &desc2);
+  assert(status == napi_ok);
+  napi_property_descriptor desc2 = DECLARE_NAPI_METHOD("nextFloat", nextFloatMethod);
+  status = napi_define_properties(env, exports, 1, &desc2);
+  assert(status == napi_ok);
+  napi_property_descriptor desc2 = DECLARE_NAPI_METHOD("nextDouble", nextDoubleMethod);
+  status = napi_define_properties(env, exports, 1, &desc2);
+  assert(status == napi_ok);
+  napi_property_descriptor desc2 = DECLARE_NAPI_METHOD("skipNextN", skipNextNMethod);
+  status = napi_define_properties(env, exports, 1, &desc2);
+  assert(status == napi_ok);
+  napi_property_descriptor desc2 = DECLARE_NAPI_METHOD("invSeed48", invSeed48Method);
+  status = napi_define_properties(env, exports, 1, &desc2);
+  assert(status == napi_ok);
+  napi_property_descriptor desc2 = DECLARE_NAPI_METHOD("mulInv", mulInvMethod);
+  status = napi_define_properties(env, exports, 1, &desc2);
+  assert(status == napi_ok);
+  return exports;
+}
+
+//EXPORT
+NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 
 #endif /* JAVARND_H_ */
