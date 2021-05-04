@@ -1,0 +1,25 @@
+{
+  "name": "seedfindinglibraryjs",
+  "version": "1.0.0",
+  "description": "This Library is created to make seed finding easier by implementing cubiomes into modern programming language JS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AabhasDanger/SeedFilteringJS.git"
+  },
+  "keywords": [
+    "mc",
+    "seedfiltering",
+    "cubiomes"
+  ],
+  "author": "AabhasDanger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AabhasDanger/SeedFilteringJS/issues"
+  },
+  "homepage": "https://github.com/AabhasDanger/SeedFilteringJS#readme",
+  "dependencies": {}
+}
