@@ -264,6 +264,18 @@ static napi_value mulInvMethod(napi_env env, napi_callback_info info) {
   return RETURN;
 }
 
+//JAVA_NEXT_INT24(S,X)
+static napi_value JAVA_NEXT_INT24Method(napi_env env, napi_callback_info info) {
+  napi_status status;
+  size_t argc = 2;
+  napi_value args[2];
+  status = napi_get_cb_info(env,info,&argc, args, NULL,NULL);
+  int S = args[0];
+  int X = args[1];
+  int RETURN = JAVA_NEXT_INT24(S,X);
+  return RETURN;
+}
+
 //Initializer
 static napi_value Init(napi_env env, napi_value exports) {
   napi_status status;
@@ -292,6 +304,9 @@ static napi_value Init(napi_env env, napi_value exports) {
   status = napi_define_properties(env, exports, 1, &desc2);
   assert(status == napi_ok);
   napi_property_descriptor desc2 = DECLARE_NAPI_METHOD("mulInv", mulInvMethod);
+  status = napi_define_properties(env, exports, 1, &desc2);
+  assert(status == napi_ok);
+  napi_property_descriptor desc2 = DECLARE_NAPI_METHOD("JAVA_NEXT_INT24", JAVA_NEXT_INT24Method);
   status = napi_define_properties(env, exports, 1, &desc2);
   assert(status == napi_ok);
   return exports;
