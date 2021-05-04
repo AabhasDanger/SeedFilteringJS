@@ -160,7 +160,7 @@ int64_t mulInv(int64_t x, int64_t m)
 //THIS IS THE START OF THE JS CONVERSION
 //===================================================================
 
-//setSeed(seed,value)
+//setSeed(seed,value) doesn't have a return Value
 static napi_value setSeedMethod(napi_env env, napi_callback_info info) {
   napi_status status;
   size_t argc = 2;
@@ -169,10 +169,10 @@ static napi_value setSeedMethod(napi_env env, napi_callback_info info) {
   int seed = args[0];
   int value = args[1];
   setSeed(seed,value);
-  return 0;
+  return NULL;
 }
 
-//next(seed,bits)
+//next(seed,bits) have a return Value
 static napi_value nextMethod(napi_env env, napi_callback_info info) {
   napi_status status;
   size_t argc = 2;
@@ -184,7 +184,7 @@ static napi_value nextMethod(napi_env env, napi_callback_info info) {
   return RETURN;
 }
 
-//nextInt(seed,n)
+//nextInt(seed,n) have a return Value
 static napi_value nextIntMethod(napi_env env, napi_callback_info info) {
   napi_status status;
   size_t argc = 2;
@@ -196,7 +196,7 @@ static napi_value nextIntMethod(napi_env env, napi_callback_info info) {
   return RETURN;
 }
 
-//nextLong(seed)
+//nextLong(seed) have a return Value
 static napi_value nextLongMethod(napi_env env, napi_callback_info info){
   napi_status status;
   size_t argc = 1;
@@ -207,7 +207,7 @@ static napi_value nextLongMethod(napi_env env, napi_callback_info info){
   return RETURN;
 }
 
-//nextFloat(seed)
+//nextFloat(seed) have a return Value
 static napi_value nextFloatMethod(napi_env env, napi_callback_info info){
   napi_status status;
   size_t argc = 1;
@@ -218,7 +218,7 @@ static napi_value nextFloatMethod(napi_env env, napi_callback_info info){
   return RETURN;
 }
 
-//nextDouble(seed)
+//nextDouble(seed) have a return Value
 static napi_value nextDoubleMethod(napi_env env, napi_callback_info info){
   napi_status status;
   size_t argc = 1;
@@ -229,7 +229,7 @@ static napi_value nextDoubleMethod(napi_env env, napi_callback_info info){
   return RETURN;
 }
 
-//skipNextN(seed,n)
+//skipNextN(seed,n) doesn't have a return Value
 static napi_value skipNextNMethod(napi_env env, napi_callback_info info) {
   napi_status status;
   size_t argc = 2;
@@ -238,10 +238,10 @@ static napi_value skipNextNMethod(napi_env env, napi_callback_info info) {
   int seed = args[0];
   int n = args[1];
   skipNextN(seed,n);
-  return 0;
+  return NULL;
 }
 
-//invSeed48(seed)
+//invSeed48(seed) have a return Value
 static napi_value invSeed48Method(napi_env env, napi_callback_info info){
   napi_status status;
   size_t argc = 1;
@@ -252,7 +252,7 @@ static napi_value invSeed48Method(napi_env env, napi_callback_info info){
   return RETURN;
 }
 
-//mulInv(x,m)
+//mulInv(x,m) have a return Value
 static napi_value mulInvMethod(napi_env env, napi_callback_info info) {
   napi_status status;
   size_t argc = 2;
