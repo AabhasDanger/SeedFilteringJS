@@ -10,8 +10,7 @@ node addons documentation -> https://nodejs.org/api/n-api.html
 
 cubiomes is a really amazing library featuring biome and structure generation.
 it dipicts minecraft world generation using arthematic mathematics.
-So there are total around 5,000 lines of code in it.
-So i highly request to any knowlegables to contribute to this repo by Submitting code for diffrent functions in the diffrent files of cubiomes.
+So i highly request to any knowlegables to contribute to this repo by Submitting code for diffrent files of cubiomes.
 So just put the name of the file (example ==> `finders.c`) and then name of the function u are submitting.
 i will go through the submissions and add them if they are relavent.
 This will speedup the project a lot.
