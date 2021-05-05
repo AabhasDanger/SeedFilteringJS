@@ -275,6 +275,8 @@ static napi_value JAVA_NEXT_INT24Method(napi_env env, napi_callback_info info) {
   int RETURN = JAVA_NEXT_INT24(S,X);
   return RETURN;
 }
+#define DECLARE_NAPI_METHOD(name, func)                                        \
+  { name, 0, func, 0, 0, 0, napi_default, 0 }
 
 //Initializer
 static napi_value Init(napi_env env, napi_value exports) {
