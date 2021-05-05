@@ -2,6 +2,8 @@
 #define LAYER_H_
 
 #include "javarnd.h"
+#include <assert.h>
+#include <node_api.h>
 
 #define __STDC_FORMAT_MACROS 1
 
